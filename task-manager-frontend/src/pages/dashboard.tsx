@@ -96,36 +96,30 @@ export default function Dashboard() {
   const statusSummary = countByStatus(uniqueUserTasks)
 
   return (
-    <>
-      <Head>
-        <title>Dashboard | Task Manager</title>
-      </Head>
+    <div className="dashboard-container">
+      <h1>📊 Dashboard</h1>
 
-      <div className="dashboard-container">
-        <h1>📊 Dashboard</h1>
-
-        <div className="task-summary">
-          <div className="summary-card">
-            <strong>Tasks Created by You</strong>
-            <p>{createdTasks.length}</p>
-          </div>
-          <div className="summary-card">
-            <strong>Tasks Assigned to You</strong>
-            <p>{assignedTasks.length}</p>
-          </div>
-          <div className="summary-card overdue">
-            <strong>Overdue Tasks</strong>
-            <p>{overdueTasks.length}</p>
-          </div>
+      <div className="task-summary">
+        <div className="summary-card">
+          <strong>Tasks Created by You</strong>
+          <p>{createdTasks.length}</p>
         </div>
-
-        <h2 className="status-summary-title">Task Status Summary</h2>
-        <div className="status-summary">
-          <div><strong>📝 To Do: </strong>{statusSummary.todo}</div>
-          <div><strong>🚧 In Progress: </strong>{statusSummary.in_progress}</div>
-          <div><strong>✅ Completed: </strong>{statusSummary.completed}</div>
+        <div className="summary-card">
+          <strong>Tasks Assigned to You</strong>
+          <p>{assignedTasks.length}</p>
+        </div>
+        <div className="summary-card overdue">
+          <strong>Overdue Tasks</strong>
+          <p>{overdueTasks.length}</p>
         </div>
       </div>
-    </>
-  );
+
+      <h2 className="status-summary-title">Task Status Summary</h2>
+      <div className="status-summary">
+        <div><strong>📝 To Do: </strong>{statusSummary.todo}</div>
+        <div><strong>🚧 In Progress: </strong>{statusSummary.in_progress}</div>
+        <div><strong>✅ Completed: </strong>{statusSummary.completed}</div>
+      </div>
+    </div>
+  )
 }
