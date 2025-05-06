@@ -32,8 +32,8 @@ You can view the live demo of the application here:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/rajat457/task-manager-frontend.git
-   cd task-manager-frontend
+   git clone https://github.com/rajat457/task-manager.git
+   cd task-manager/task-manager-frontend
    ```
 
 2. Install dependencies:
