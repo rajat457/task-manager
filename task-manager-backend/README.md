@@ -30,8 +30,8 @@ The backend for the Task Manager application, built using NestJS and Supabase. T
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/rajat457/task-manager-backend.git
-   cd task-manager-backend
+   git clone https://github.com/rajat457/task-manager.git
+   cd task-manager/task-manager-backend
    ```
 
 2. Install dependencies:
