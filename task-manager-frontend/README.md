@@ -1,11 +1,11 @@
 
 # Task Manager Frontend
 
-The frontend for the Task Manager application, built using Next.js. This frontend allows users to manage their tasks, including creating, updating, and deleting tasks, as well as user authentication features.
+The frontend for the Task Manager application is built using Next.js. This frontend allows users to manage their tasks, including creating, updating, and deleting tasks, and user authentication features.
 
 ## Live Demo
 You can view the live demo of the application here:
-[Live Demo Link](https://task-manager-frontend-seven-blush.vercel.app/)
+[Live Demo](https://task-manager-gray-iota.vercel.app/)
 
 ## Features
 
