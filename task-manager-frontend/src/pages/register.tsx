@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, CSSProperties } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 import { useRouter } from 'next/router'
 
@@ -9,23 +9,41 @@ export default function Register() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-
+  
     if (!email || !password) {
       setError('Please fill in both email and password.')
       return
     }
-
+  
     setError('')
     setLoading(true)
-
+  
     try {
-      const { error } = await supabase.auth.signUp({ email, password })
+      const { data, error } = await supabase.auth.signUp({ email, password })
+  
       if (error) {
         setError(error.message)
       } else {
-        router.push('/login')
+        // ✅ Insert user into your 'users' table
+        const user = data.user
+        if (user) {
+          const { error: insertError } = await supabase.from('users').insert([
+            {
+              id: user.id,
+              email: user.email,
+              // don't store password here if you're using Supabase Auth
+            }
+          ])
+  
+          if (insertError) {
+            console.error('Error inserting into users table:', insertError.message)
+            setError('Registered, but failed to save user details.')
+          } else {
+            router.push('/login')
+          }
+        }
       }
     } catch (err) {
       setError('Something went wrong. Please try again later.')
@@ -33,6 +51,7 @@ export default function Register() {
       setLoading(false)
     }
   }
+  
 
   return (
     <div style={styles.container}>
@@ -61,7 +80,7 @@ export default function Register() {
   )
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     maxWidth: '400px',
     margin: '2rem auto',

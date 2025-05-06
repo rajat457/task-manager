@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, CSSProperties } from 'react'
 import { supabase } from '@/lib/supabaseClient'
 
 export default function CreateTask() {
@@ -177,7 +177,7 @@ export default function CreateTask() {
             <option value="">Assign to...</option>
             {users.map((u) => (
               <option key={u.id} value={u.id}>
-                {u.email}
+                {u.email.split('@')[0]}
               </option>
             ))}
           </select>
@@ -189,7 +189,7 @@ export default function CreateTask() {
   )
 }
 
-const styles = {
+const styles: { [key: string]: CSSProperties } = {
   container: {
     padding: '2rem',
     maxWidth: '600px',
